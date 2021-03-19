@@ -1,0 +1,13 @@
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Proxy.dll
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Proxy.pdb
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Data.dll
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Model.dll
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Util.dll
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Data.pdb
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Model.pdb
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\bin\Debug\Util.pdb
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\obj\Debug\Proxy.csprojAssemblyReference.cache
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\obj\Debug\Proxy.csproj.CoreCompileInputs.cache
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\obj\Debug\Proxy.csproj.CopyComplete
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\obj\Debug\Proxy.dll
+C:\Users\Luiz Sena\source\repos\Lanchonete\Proxy\obj\Debug\Proxy.pdb
