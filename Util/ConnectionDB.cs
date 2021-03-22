@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 
 namespace Util
@@ -27,7 +23,7 @@ namespace Util
                 CommandType = CommandType.Text,
                 Connection = _conn
             };
-            return (cmd.ExecuteNonQuery() == 1) ? true : false;
+            return cmd.ExecuteNonQuery() == 1 ? true : false;
         }
 
         public SqlDataReader ExecQueryReturn(string query)

@@ -3,21 +3,11 @@ using Model;
 using System;
 using Proxy;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Lanchonete
 {
     public partial class Default : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            LoadTable();
-            LoadLog();
-        }
-
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
             Pizza pizza = new Pizza
@@ -36,6 +26,76 @@ namespace Lanchonete
                 lblMsg.Text = "Falha na inserção!";
                 SaveLog("Erro Inserção de Dado");
             }
+            LimpaCampos();
+        }
+        protected void btnAtualziar_Click(object sender, EventArgs e)
+        {
+            Pizza valor;
+            string desc = txtDescricao.Text;
+            string id = txtId.Text;
+
+            if(id == "") 
+            { 
+                valor = new PizzaDB().Consultar(desc);
+                SaveLog("Consulta por ID");
+            }
+            else 
+            { 
+                valor = new PizzaDB().Consultar(id);
+                SaveLog("Consulta por Descrição");
+            }
+            LoadLog();
+            txtId.Text = Convert.ToString(valor.Id);
+            txtDescricao.Text = valor.Descricao;
+            txtValor.Text = Convert.ToString(valor.Valor);
+        }
+        protected void btnAtt_Click(object sender, EventArgs e)
+        {
+            Pizza pizza = new Pizza
+            {
+                Id = int.Parse(txtId.Text),
+                Descricao = txtDescricao.Text,
+                Valor = decimal.Parse(txtValor.Text)
+            };
+
+            if(new PizzaDB().Atualizar(pizza))
+            {
+                lblMsg.Text = "Atualizado com Sucesso!";
+                LoadTable();
+                SaveLog("Atualiza campo");
+                LoadLog();
+            }
+            else
+            {
+                lblMsg.Text = "Erro na Atualização";
+                SaveLog("Erro atualização");
+            }
+            LimpaCampos();
+        }
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+
+            if(!new PizzaDB().Deletar(id))
+            {
+                lblMsg.Text = "Deletado com Sucesso!";
+                SaveLog("Deleção de Dado");
+                
+            }
+            else
+            {
+                lblMsg.Text = "Erro ao deletar!";
+                SaveLog("Erro na Deleção");
+            }
+            LoadTable();
+            LoadLog();
+
+            LimpaCampos();
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            LoadTable();
+            LoadLog();
         }
         protected void btnLog_Click(object sender, EventArgs e)
         {
@@ -65,5 +125,14 @@ namespace Lanchonete
             gvLog.DataSource = this.GetLogs();
             gvLog.DataBind();
         }
+
+        private void LimpaCampos()
+        {
+            txtId.Text = "";
+            txtDescricao.Text = "";
+            txtValor.Text = "";
+        }
+
+        
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Util;
 
 namespace Data
@@ -35,6 +31,52 @@ namespace Data
                 var returnData = _conn.ExecQueryReturn(sql);
                 return TransformDataReaderToList(returnData);
             }
+        }
+
+        public Pizza Consultar(string desc)
+        {
+            Pizza pizza = new Pizza();
+            string sql;
+
+            if (int.TryParse(desc, out int id))
+                sql = string.Format(Pizza.SELECTUNIQID, id);
+            else
+                sql = string.Format(Pizza.SELECTUNIQ, desc);
+
+            using(_conn = new ConnectionDB())
+            {
+                var returnData = _conn.ExecQueryReturn(sql);
+                if (returnData.Read())
+                    pizza = new Pizza
+                    {
+                        Id = int.Parse(returnData["id"].ToString()),
+                        Descricao = returnData["descricao"].ToString(),
+                        Valor = decimal.Parse(returnData["valor"].ToString())
+                    };
+                return pizza;
+            }
+        }
+
+        public bool Atualizar(Pizza pizza)
+        {
+            bool status = false;
+            string sql = string.Format(Pizza.UPDATE, pizza.Descricao, pizza.Valor, pizza.Id);
+            using(_conn = new ConnectionDB())
+            {
+                status = _conn.ExecQuery(sql);
+            }
+            return status;
+        }
+
+        public bool Deletar(int id)
+        {
+            bool status = false;
+            string sql = string.Format(Pizza.DELETAR, id);
+            using(_conn = new ConnectionDB())
+            {
+                status = _conn.ExecQuery(sql);
+            }
+            return status;
         }
 
         private List<Pizza> TransformDataReaderToList(SqlDataReader returnData)

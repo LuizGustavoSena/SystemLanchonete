@@ -24,15 +24,19 @@
             height: 33px;
         }
         .auto-style6 {
-            width: 311px;
+            width: 373px;
         }
         .auto-style7 {
             height: 26px;
-            width: 311px;
+            width: 373px;
         }
         .auto-style8 {
             height: 33px;
-            width: 311px;
+            width: 373px;
+        }
+        .auto-style9 {
+            width: 100%;
+            margin-left: 364px;
         }
     </style>
 </head>
@@ -40,7 +44,23 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <table style="width:100%;">
+        <table class="auto-style9">
+            <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
+                <td class="auto-style6">
+                    &nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="lblId" runat="server" Text="Id: "></asp:Label>
+                </td>
+                <td class="auto-style6">
+                    <asp:TextBox ID="txtId" runat="server" Width="57px"></asp:TextBox>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
             <tr>
                 <td class="auto-style2">
                     <asp:Label ID="lblDescricao" runat="server" Text="Descrição: "></asp:Label>
@@ -67,7 +87,10 @@
             <tr>
                 <td class="auto-style4"></td>
                 <td class="auto-style8">
-                    <asp:Button ID="btnEnviar" runat="server" OnClick="btnEnviar_Click" Text="Enviar" />
+                    <asp:Button ID="btnEnviar" runat="server" OnClick="btnEnviar_Click" Text="Inserir" />
+                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnAtualziar_Click" Text="Buscar" />
+                    <asp:Button ID="btnAtt" runat="server" Text="Atualizar" OnClick="btnAtt_Click" />
+                    <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Deletar" />
                 </td>
                 <td class="auto-style5">
                     <asp:Button ID="btnLog" runat="server" OnClick="btnLog_Click" Text="Logs" />
